@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
+import React from 'react';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen } from '@fortawesome/free-solid-svg-icons'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons'
 import styles from '../Styles/BookItem.module.css'
 
 export default function BookItem({ itemProp, handleChange, delBook, setUpdate  }) {
@@ -58,3 +58,14 @@ export default function BookItem({ itemProp, handleChange, delBook, setUpdate  }
     </li>
   )
 }
+
+BookItem.propTypes = {
+  itemProp: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  delBook: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+};

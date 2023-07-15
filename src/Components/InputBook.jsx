@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types'; 
 
-// eslint-disable-next-line react/prop-types
 export default function InputBook({addBookItem}) {
 
   const [title, setTitle] = useState('');
@@ -37,3 +37,7 @@ export default function InputBook({addBookItem}) {
     </>
   )
 }
+
+InputBook.propTypes = {
+  addBookItem: PropTypes.func.isRequired,
+};

@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 import BookItem from './BookItem'
 
-// eslint-disable-next-line react/prop-types
 export default function BookList({booksProps, handleChange, delBook, setUpdate}) {
 
   return (
@@ -19,3 +18,16 @@ export default function BookList({booksProps, handleChange, delBook, setUpdate})
     </ul>
   )
 }
+
+BookList.propTypes = {
+  booksProps: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      completed: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  delBook: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+};
