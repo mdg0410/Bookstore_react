@@ -79,15 +79,6 @@ The project is built with React [Front-End].
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🚀 Live Demo <a name="live-demo"></a>
-
-**Coming soon**
-
-<!-- **Open the live-demo of the project**
-[Project Link][] -->
-
-<!-- GETTING STARTED -->
-
 ## 💻 Getting Started <a name="getting-started"></a>
 
 To get a local copy up and running, follow these steps.
