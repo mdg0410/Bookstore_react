@@ -31,8 +31,8 @@
 
 # 📖 Bookstore<a name="about-project"></a>
 
-**Bookstore** In this project, I build a Booklist with React..
-Functions: Add Books.
+**Bookstore** In this project, I build a Booklist with React and Redux..
+Functions: Add Books | Remove Books | Change Status.
 The project is built with React [Front-End].
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -43,6 +43,7 @@ The project is built with React [Front-End].
 - [**CSS**]
 - [**JavaScript**]
 - [**React**]
+- [**Redux**]
 
 <details>
   <summary>Client</summary>
@@ -51,6 +52,7 @@ The project is built with React [Front-End].
     <li><a href="https://www.w3schools.com/css/default.asp">CSS</a></li>
     <li><a href="https://www.w3schools.com/javascript/default.asp">JavaScript</a></li>
     <li><a href="https://react.dev/">React</a></li>
+    <li><a href="https://redux.js.org/">Redux</a></li>
   </ul>
 </details>
 <details>
@@ -72,17 +74,10 @@ The project is built with React [Front-End].
 ### Key Features <a name="key-features"></a>
 
 - **[Add Books]**
+- **[Remove Books]**
+- **[Change Status]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-**Coming soon**
-
-<!-- **Open the live-demo of the project**
-[Project Link][] -->
-
-<!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
