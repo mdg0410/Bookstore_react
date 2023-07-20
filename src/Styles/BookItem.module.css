@@ -1,0 +1,40 @@
+.item {
+  display: flex;
+  width: 100%;
+  font-size: 1rem;
+  list-style-type: none;
+  padding: 14px 0;
+  border-radius: 2vh;
+  border-bottom: 1px solid #fff;
+  background-color: rgba(29, 53, 147, 0.4);
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  padding: 0 3vh;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.content span {
+  flex: 1;
+  order: 1;
+}
+
+.content button {
+  cursor: pointer;
+  background: transparent;
+  order: 2;
+  outline: none;
+  border: 2px solid #000;
+}
+
+.textInput {
+  width: 100%;
+  padding: 10px;
+  margin: 0 3vh;
+  border: 1px solid #addee6;
+  outline: none;
+}
