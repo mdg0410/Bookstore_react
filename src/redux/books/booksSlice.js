@@ -1,20 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from 'nanoid';
 
 const initialState = [
   {
-    "item_id": "item1",
+    "item_id": nanoid(),
     "title": "The Great Gatsby",
     "author": "John Smith",
     "category": "Fiction"
   },
   {
-    "item_id": "item2",
+    "item_id": nanoid(),
     "title": "Anna Karenina",
     "author": "Leo Tolstoy",
     "category": "Fiction"
   },
   {
-    "item_id": "item3",
+    "item_id": nanoid(),
     "title": "The Selfish Gene",
     "author": "Richard Dawkins",
     "category": "Nonfiction"
@@ -28,7 +29,7 @@ const booksSlice = createSlice({
   reducers: {
     addBook: (state, action) => {
       const book = {
-        "item_id": `item${state.length+1}`,
+        "item_id": nanoid(),
         "title": action.payload.title,
         "author": action.payload.author,
         "category": "Undefined"
