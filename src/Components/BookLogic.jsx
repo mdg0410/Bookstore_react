@@ -29,7 +29,7 @@ const BookLogic = () => {
     <div>
       <InputBook />
       {[...books].map((book) => (
-        <BookItem key={book.item_id} book={book} />
+        <BookItem key={book.item_id} {...book} />
       ))}
     </div>
   );
