@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBooks } from "../redux/books/booksSlice"; // Asegúrate de proporcionar la ruta correcta
 import BookItem from "./BookItem"; // Asegúrate de proporcionar la ruta correcta
+import InputBook from "./InputBook";
 
 const BookLogic = () => {
   const dispatch = useDispatch();
@@ -24,10 +25,11 @@ const BookLogic = () => {
     return <div>Error: {error}</div>;
   }
 
-  return (
+  return (  
     <div>
-      {books.map((book) => (
-        <BookItem key={book.item_id} book={book} bookId={book.item_id} />
+      <InputBook />
+      {[...books].map((book) => (
+        <BookItem key={book.item_id} book={book} />
       ))}
     </div>
   );
