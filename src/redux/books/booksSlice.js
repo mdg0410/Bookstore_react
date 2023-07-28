@@ -1,47 +1,76 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { nanoid } from 'nanoid';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const initialState = [
-  {
-    "item_id": nanoid(),
-    "title": "The Great Gatsby",
-    "author": "John Smith",
-    "category": "Fiction"
-  },
-  {
-    "item_id": nanoid(),
-    "title": "Anna Karenina",
-    "author": "Leo Tolstoy",
-    "category": "Fiction"
-  },
-  {
-    "item_id": nanoid(),
-    "title": "The Selfish Gene",
-    "author": "Richard Dawkins",
-    "category": "Nonfiction"
-  }
-]
+const BASE_URL =
+  "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/2sej3jbQQhqZtWYvtwCl/books";
 
-
-const booksSlice = createSlice({
-  name: 'books',
-  initialState,
-  reducers: {
-    addBook: (state, action) => {
-      const book = {
-        "item_id": nanoid(),
-        "title": action.payload.title,
-        "author": action.payload.author,
-        "category": "Undefined"
-      }
-      return [...state, book]
-    },
-    removeBook: (state, action) => {
-      return state.filter((book) => book.item_id !== action.payload.item_id);
-    },
-  },
+export const fetchBooks = createAsyncThunk("books/fetchBooks", async () => {
+  const response = await axios.get(BASE_URL);
+  const data = response.data
+  const transformedData = Object.entries(data).map(([item_id, itemData]) => ({
+    item_id,
+    title: itemData[0].title,
+    author: itemData[0].author,
+    category: itemData[0].category,
+  }));
+  console.log(transformedData);
+  return transformedData;
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
+export const addBook = createAsyncThunk("books/addBook", async (newBook) => {
+  const response = await axios.post(BASE_URL, newBook);
+  return response.data;
+});
+
+export const deleteBook = createAsyncThunk("books/deleteBook", async (bookId) => {
+  await axios.delete(`${BASE_URL}/${bookId}`);
+  return bookId;
+});
+
+const booksSlice = createSlice({
+  name: "books",
+  initialState: {
+    data: [],
+    status: "idle",
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBooks.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchBooks.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data = action.payload;
+      })
+      .addCase(fetchBooks.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(addBook.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addBook.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data.push(action.payload);
+      })
+      .addCase(addBook.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(deleteBook.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(deleteBook.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.data = state.data.filter((book) => book.id !== action.payload);
+      })
+      .addCase(deleteBook.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
+  },
+});
 
 export default booksSlice.reducer;
