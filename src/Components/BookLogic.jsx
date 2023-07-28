@@ -15,7 +15,7 @@ const BookLogic = () => {
     if (status === "idle") {
       dispatch(fetchBooks());
     }
-  }, []);
+  }, [dispatch, status]);
 
   if (status === "loading") {
     return <div>Loading...</div>;

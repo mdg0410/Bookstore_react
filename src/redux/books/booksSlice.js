@@ -13,7 +13,6 @@ export const fetchBooks = createAsyncThunk("books/fetchBooks", async () => {
     author: itemData[0].author,
     category: itemData[0].category,
   }));
-  console.log(transformedData);
   return transformedData;
 });
 
@@ -24,7 +23,6 @@ export const addBook = createAsyncThunk("books/addBook", async (newBook) => {
 
 export const deleteBook = createAsyncThunk("books/deleteBook", async (bookId) => {
   await axios.delete(`${BASE_URL}/${bookId}`);
-  console.log(bookId);
   return bookId;
 });
 
