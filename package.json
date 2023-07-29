@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@tomik23/react-circular-progress-bar": "^1.1.1",
     "axios": "^1.4.0",
+    "font-face": "^2.3.4",
     "nanoid": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
