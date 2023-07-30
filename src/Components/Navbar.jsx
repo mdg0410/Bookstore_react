@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import '../Styles/Navbar.css'
+import style from '../Styles/Navbar.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const links = [
   { path: '/', text: 'Home' },
@@ -28,16 +30,18 @@ const Navbar = () => {
   }, [dropdown]);
 
   return (
-    <nav className="navbar">
-    <ul className='navbarList'>
+    <nav className={style.navbar}>
+      <span className={style.BookstoreCMS}>Bookstore CMS</span>
+      <ul className={style.list}>
       {links.map((link) => {
         return (
-          <li key={link.text} className='navbarPath'>
+          <li key={link.text} className={style.BOOKS}>
             <NavLink to={link.path}>{link.text}</NavLink>
           </li>
         );
       })}
     </ul>
+    <div className={style.Oval}><FontAwesomeIcon icon={faUser} /></div>
   </nav>
   );
 };

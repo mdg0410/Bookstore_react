@@ -18,7 +18,7 @@ const BookLogic = () => {
   }, [dispatch, status]);
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   if (status === "failed") {
@@ -26,12 +26,14 @@ const BookLogic = () => {
   }
 
   return (  
+    <>
     <div>
-      <InputBook />
       {[...books].map((book) => (
         <BookItem key={book.item_id} {...book} />
       ))}
     </div>
+    <InputBook />
+    </>
   );
 };
 

@@ -7,6 +7,12 @@ const InputBook = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [categories] = useState([
+    'Fiction',
+    'Sci-Fi',
+    'Fantasy',
+    'Drama',
+]);
   const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
@@ -16,7 +22,7 @@ const InputBook = () => {
         item_id:nanoid(),
         title: title,
         author:author,
-        category:"t3rr"
+        category:categories[Math.floor(Math.random() * categories.length)],
       };  
       dispatch(addBook(book));
       setTitle('');
@@ -36,26 +42,14 @@ const InputBook = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className="form-container">
-        <input
-          type="text"
-          placeholder="Add Book..."
-          className="input-text"
-          value={title}
-          onChange={handleChangeTitle}
-        />
-        <input
-          type="text"
-          placeholder="Add Author..."
-          className="input-text"
-          value={author}
-          onChange={handleChangeAuthor}
-        />
-        <button className="input-submit" type="submit">Submit</button>
+    <div className="form">
+      <h2 className="add-book-title">ADD NEW BOOK</h2>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="title" placeholder="Book title" value={title} onChange={handleChangeTitle} required />
+        <input type="text" name="author" placeholder="Author" value={author} onChange={handleChangeAuthor} required />
+        <button type="submit" className="add-book-btn">ADD BOOK</button>
       </form>
-      <span className="submit-warning">{message}</span>
-    </>
+    </div>
   );
 };
 
